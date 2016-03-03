@@ -75,14 +75,33 @@ void suppression(noeud **racine, int valeur){
   }
 }
 
+void supprime_arbre(noeud** racine) {
+    noeud* courant = *racine;
+
+    if(courant) {
+        if(courant->gauche) {
+            supprime_arbre(&courant->gauche);
+        }
+        if(courant->droit) {
+            supprime_arbre(&courant->droit);
+        }
+        courant->valeur = -1;
+        courant->gauche = NULL;
+        courant->droit  = NULL;
+        free(courant);
+        courant = NULL;
+    }
+}
+
 int supmax(noeud **racine){
   if((*racine)->droit)
     return supmax(&((*racine)->droit));
 
   int max = (*racine)->valeur;
-  noeud** oldRacine = racine;
+  noeud* oldRacine = *racine;
   (*racine) = (*racine)->gauche;
-  free(*oldRacine);
+  free(oldRacine);
+  oldRacine = NULL;
   return max;
 
 }
@@ -105,10 +124,16 @@ void insertion_iterative(noeud** racine, int valeur) {
 void remplissage(noeud **racine, const char *nom){
 
     FILE* file = fopen(nom, "r");
-    int line = 0;
-    while(!feof(file)) {
-        fscanf(nom, "%d", &line);
-        insertion_recursive(racine, line);
+    char* line;
+    int readValue = 0;
+    ssize_t read;
+    size_t n = 0;
+    while(read = getline(&line, &n , file) != -1) {
+        readValue = atoi(line);
+        // printf("read value : %d\n", readValue);
+        insertion_recursive(racine, readValue);
     }
+    free(line);
+    line = NULL;
     fclose(file);
 }

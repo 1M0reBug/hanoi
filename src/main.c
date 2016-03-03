@@ -30,26 +30,34 @@ int main(){
 
 	printf("Racine : %d, gauche : %d, gauche-gauche : %d, droit : %d \n", racine->valeur, racine->gauche->valeur, racine->gauche->gauche->valeur, racine->droit->valeur );
 
-	printf("\n-------------GRD---------------\n");
+	printf("\n------------ GRD -------------- \n");
 	grd(racine);
-	printf("\n-------------------------------	\n");
+	printf("\n------------------------------- \n");
 
-	printf("\n-------------RGD---------------\n\n");
+	printf("\n------------ RGD -------------- \n");
 	rgd(racine);
-	printf("\n-------------------------------	\n");
+	printf("\n------------------------------- \n");
 
-	printf("\n-------------Supression 15 RGD---------------\n");
+	printf("\n----- Supression(15) RGD ------ \n");
 	suppression(&racine, 15);
 	rgd(racine);
-	printf("\n---------------------------------------------	\n");
+	printf("\n------------------------------- \n\n");
 
 	printf("Racine : %d, gauche : %d, gauche-gauche : %d, droit : %d \n", racine->valeur, racine->gauche->valeur, racine->gauche->gauche->valeur, racine->droit->valeur );
 
-	printf("\n\nread from file file.txt\n");
+	printf("\n\nlecture de file.txt\n");
 
     noeud* fromFile = NULL;
     remplissage(&fromFile, "file.txt");
     rgd(fromFile);
+
+    printf("\n");
+
+    supprime_arbre(&fromFile);
+    supprime_arbre(&racine);
+
+    printf("fromFile : %d\n", fromFile);
+    printf("racine : %d\n", racine);
 
 
 	return 0;

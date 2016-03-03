@@ -1,4 +1,4 @@
-EXEC = liste # [NOM DE L'EXE]
+EXEC =  abr# [NOM DE L'EXE]
 CXX = gcc
 OPTION = -Wall -Wextra
 

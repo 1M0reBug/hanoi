@@ -6,3 +6,4 @@ void rgd(noeud *racine);    //Affiche tous les éléments de l'arbre selon un pa
 void suppression(noeud **racine, int valeur);   //Supprime la valeur de l'arbre
 void remplissage(noeud **racine, const char *nom);  //Remplit un arbre à l'aide des valeurs trouvées dans le fichier dont le nom est passé en paramètre
 int supmax(noeud **racine);   //Fonction obscure
+void supprime_arbre(noeud** racine); // supprimer l'ensemble de l'arbre et libère la mémoire
