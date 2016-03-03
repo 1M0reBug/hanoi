@@ -45,12 +45,11 @@ int main(){
 
 	printf("Racine : %d, gauche : %d, gauche-gauche : %d, droit : %d \n", racine->valeur, racine->gauche->valeur, racine->gauche->gauche->valeur, racine->droit->valeur );
 
-	//
-	//
-	// printf("\n-------------Supression 17 GRD---------------\n\n");
-	// suppression(&racine, 17);
-	// grd(racine);
-	// printf("\n----------------------------	\n");
+	printf("\n\nread from file file.txt\n");
+
+    noeud* fromFile = NULL;
+    remplissage(&fromFile, "file.txt");
+    rgd(fromFile);
 
 
 	return 0;

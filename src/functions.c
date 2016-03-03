@@ -80,7 +80,9 @@ int supmax(noeud **racine){
     return supmax(&((*racine)->droit));
 
   int max = (*racine)->valeur;
+  noeud** oldRacine = racine;
   (*racine) = (*racine)->gauche;
+  free(*oldRacine);
   return max;
 
 }
@@ -100,8 +102,13 @@ void insertion_iterative(noeud** racine, int valeur) {
   (*racine)->droit = NULL;
 }
 
-// void remplissage(noeud **racine, const char *nom){
-//   while(racine){
-//     if()
-//   }
-// }
+void remplissage(noeud **racine, const char *nom){
+
+    FILE* file = fopen(nom, "r");
+    int line = 0;
+    while(!feof(file)) {
+        fscanf(nom, "%d", &line);
+        insertion_recursive(racine, line);
+    }
+    fclose(file);
+}
